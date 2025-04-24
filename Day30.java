@@ -1,24 +1,42 @@
 class Solution {
-    // Function to sort an array of 0s, 1s, and 2s
-    public void sort012(int[] arr) {
-        int n = arr.length;
-        int low = 0, high = n - 1, mid = 0;
+    int search(int[] arr, int key) {
 
-        // Using the Dutch National Flag algorithm
-        while (mid <= high) {
-            if (arr[mid] == 0) {
-                swap(arr, mid++, low++);
-            } else if (arr[mid] == 1) {
-                mid++;
-            } else {
-                swap(arr, mid, high--);
+        // Initialize two pointers, lo and hi, at the start
+        // and end of the array
+        int lo = 0, hi = arr.length - 1;
+
+        while (lo <= hi) {
+            int mid = lo + (hi - lo) / 2;
+
+            // If key found, return the index
+            if (arr[mid] == key) return mid;
+
+            // If Left half is sorted
+            if (arr[mid] >= arr[lo]) {
+
+                // If the key lies within this sorted half,
+                // move the hi pointer to mid - 1
+                if (key >= arr[lo] && key < arr[mid]) hi = mid - 1;
+
+                // Otherwise, move the lo pointer to mid + 1
+                else
+                    lo = mid + 1;
+            }
+
+            // If Right half is sorted
+            else {
+
+                // If the key lies within this sorted half,
+                // move the lo pointer to mid + 1
+                if (key > arr[mid] && key <= arr[hi]) lo = mid + 1;
+
+                // Otherwise, move the hi pointer to mid - 1
+                else
+                    hi = mid - 1;
             }
         }
-    }
 
-    private void swap(int arr[], int i, int j) {
-        int t = arr[i];
-        arr[i] = arr[j];
-        arr[j] = t;
+        // Key not found
+        return -1;
     }
 }
