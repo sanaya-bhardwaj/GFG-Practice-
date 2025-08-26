@@ -1,6 +1,5 @@
 class Solution {
     public void quickSort(int[] arr, int low, int high) {
-        // code here
         if (low < high) {
             int pIndex = partition(arr, low, high);
             quickSort(arr, low, pIndex - 1);
@@ -9,7 +8,6 @@ class Solution {
     }
 
     private int partition(int[] arr, int low, int high) {
-        // code here
         int pivot = arr[low];
         int i = low;
         int j = high;
@@ -26,7 +24,7 @@ class Solution {
             }
         }
 
-        swap(arr, low, j); // put pivot in correct place
+        swap(arr, low, j); // place pivot in correct position
         return j;
     }
 
@@ -36,3 +34,4 @@ class Solution {
         arr[j] = temp;
     }
 }
+
