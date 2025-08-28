@@ -6,12 +6,10 @@ class Solution {
             quickSort(arr, pIndex + 1, high);
         }
     }
-
     private int partition(int[] arr, int low, int high) {
         int pivot = arr[low];
         int i = low;
         int j = high;
-
         while (i < j) {
             while (i <= high && arr[i] <= pivot) {
                 i++;
@@ -27,7 +25,6 @@ class Solution {
         swap(arr, low, j); // place pivot in correct position
         return j;
     }
-
     private void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
