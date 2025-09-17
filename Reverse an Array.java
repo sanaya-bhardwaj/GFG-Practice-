@@ -1,3 +1,4 @@
+//using single variable
 class Solution {
     public void reverseArray(int arr[]) {
         reverse(arr, 0, arr.length);
