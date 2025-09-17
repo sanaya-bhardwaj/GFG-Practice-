@@ -11,3 +11,23 @@ class Solution {
         reverse(arr, i + 1, n);
     }
 }
+
+//using recursion and two pointer approach
+class Solution {
+    public void reverseArray(int[] arr) {
+        reverseHelper(arr, 0, arr.length - 1);
+    }
+
+    private void reverseHelper(int[] arr, int left, int right) {
+        // Base case: stop when pointers cross
+        if (left >= right) return;
+
+        // Swap elements
+        int temp = arr[left];
+        arr[left] = arr[right];
+        arr[right] = temp;
+
+        // Recursive call
+        reverseHelper(arr, left + 1, right - 1);
+    }
+}
